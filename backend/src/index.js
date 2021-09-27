@@ -41,7 +41,7 @@ app.get('/api/v1/list-employees', async (req, res) => {
         let query = `SELECT * FROM employee`
         const data = await client.query(query)
         console.log('data from db:', data.rows)
-        res.send(data.rows).sendStatus(200)
+        res.send(data.rows).sendStatus(200).setHeader('Content-Type', 'application/json');
     }catch(err){
         console.log(`${err}`)
     }
@@ -54,7 +54,7 @@ app.get('/api/v1/list-bosses', async (req, res) => {
         let query = `SELECT * FROM boss`
         const data = await client.query(query)
         console.log('data from db:', data.rows)
-        res.send(data.rows).sendStatus(200)
+        res.send(data.rows).sendStatus(200).setHeader('Content-Type', 'application/json');
     }catch(err){
         console.log(`${err}`)
     }
@@ -77,7 +77,7 @@ app.post('/api/v1/create-employee', async (req, res) => {
         ]
         const data = await client.query(query, values)
         console.log('data from db:', data.rows)
-        res.send(data.rows).sendStatus(201)
+        res.send(data.rows).sendStatus(201).setHeader('Content-Type', 'application/json');
     }catch(err){
         console.log(`${err}`)
     }
@@ -110,7 +110,7 @@ app.post('/api/v1/create-boss', async (req, res) => {
         }
         const data = await client.query(query, values)
         console.log('data from db:', data.rows)
-        res.send(data.rows).sendStatus(201)
+        res.send(data.rows).sendStatus(201).setHeader('Content-Type', 'application/json');
     }catch(err){
         console.log(`${err}`)
     }

@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: frontend
+    ports:
+      - "4200:4200"
+    networks: 
+      - pruebas
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: backend
+    ports:
+      - "5000:5000"
+    networks: 
+      - pruebas
+
+  postgres:
+    image: postgres
+    container_name: postgresdb
+    restart: always
+    user: "1000:50"
+    volumes:
+      - ./PostgresData:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      PGDATA: /var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks: 
+      - pruebas
+
+networks: 
+  pruebas:
+    driver: bridge

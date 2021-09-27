@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h4>Agregar</h4>
+            <form [formGroup]="form">
+                <div class="form-group my-2">
+                    <label for="name">Full name</label>
+                    <input formControlName="name" type="text" class="form-control" name='name'>
+                </div>
+                <div class="form-group my-2">
+                    <label for="employee">Employee</label>
+                    <input formControlName="activate" type="checkbox" class="mx-5" name='activate'>
+                </div>
+                <div class="form-group my-2">
+                    <label for="employee">Employee name</label>
+                    <input formControlName="employee" type="text" class="form-control" name='employee'>
+                </div>
+                <button (click)="agregar()" [disabled]="!form.valid" class="btn btn-success my-2">Agregar</button>
+            </form>
+        </div>
+        <div class="col">
+            <h4>List of bosses</h4>
+            <div *ngFor="let it of bosses">
+                <h6>it.name</h6>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <button routerLink='/' class="btn btn-danger">Volver</button>
+        </div>
+    </div>
+</div>

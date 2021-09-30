@@ -19,9 +19,13 @@
             </form>
         </div>
         <div class="col">
-            <h4>List of bosses</h4>
+            <h4>Bosses</h4>
             <div *ngFor="let it of bosses">
-                <h6>it.name</h6>
+                <div class="row">
+                    <div class="col">
+                        <h6>{{it.name}}</h6>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

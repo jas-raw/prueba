@@ -7,4 +7,4 @@ COPY ./frontend /home/node/app
 RUN npm run build --prod
 
 FROM nginx:1.17.1-alpine
-COPY --from=build /home/node/app/dist/chatico-angular /usr/share/nginx/html
+COPY --from=build /home/node/app/dist/frontend /usr/share/nginx/html

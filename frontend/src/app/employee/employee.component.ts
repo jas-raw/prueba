@@ -16,7 +16,7 @@ export class EmployeeComponent implements OnInit {
 
   async ngOnInit() {
     this.crearFormulario()
-    this.employees = await this.ax.listBoss()
+    this.employees = await this.ax.listEmployee()
   }
 
   crearFormulario(){
@@ -30,7 +30,7 @@ export class EmployeeComponent implements OnInit {
   async agregar(){
     await this.ax.addEmployee(this.form.value)
     this.form.reset()
-    this.employees = await this.ax.listBoss()
+    this.employees = await this.ax.listEmployee()
   }
 
 }

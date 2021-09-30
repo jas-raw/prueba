@@ -11,6 +11,7 @@ export class BossComponent implements OnInit, AfterViewChecked {
 
   form!: FormGroup
   bosses!: any
+  valueAnt!: boolean
 
   constructor(private fb: FormBuilder, private ax: AxiosService) { }
 
@@ -20,10 +21,13 @@ export class BossComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked(){
-    if(this.form.value.activate){
-      this.form.controls['employee'].enable
-    }else{
-      this.form.controls['employee'].disable
+    if(this.valueAnt !== this.form.value.activate){
+      if(this.form.value.activate){
+        this.form.controls['employee'].enable()
+      }else{
+        this.form.controls['employee'].disable()
+      }
+      this.valueAnt = this.form.value.activate
     }
   }
 
@@ -41,7 +45,7 @@ export class BossComponent implements OnInit, AfterViewChecked {
       employee: data.activate ? data.employee : null,
       name: data.name
     }
-    await this.ax.addBoss(JSON.stringify(datos))
+    await this.ax.addBoss(datos)
     this.form.reset()
     this.bosses = await this.ax.listBoss()
   }

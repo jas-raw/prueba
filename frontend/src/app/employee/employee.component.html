@@ -21,7 +21,11 @@
         <div class="col">
             <h4>List of employees</h4>
             <div *ngFor="let it of employees">
-                <h6>{{it.name}}</h6>
+                <div class="row">
+                    <div class="col">
+                        <h6>{{it.name}}</h6>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
